@@ -1,0 +1,745 @@
+/* =====================================================
+   DHYUTHI 7.0
+   NILAVILAKKU REIMAGINED
+   Aligned to the IEEE Brand Identity Quick Reference Guide
+===================================================== */
+
+
+/* =====================================================
+   BRAND TOKENS
+   Every colour below is from the approved IEEE palette.
+===================================================== */
+
+:root {
+
+    /* IEEE blue + approved bright palette */
+    --ieee-blue: #00629B;   /* PMS 3015 C  */
+    --cyan: #00B5E2;        /* PMS Cyan    */
+    --white: #FFFFFF;
+    --yellow: #FFD100;      /* PMS 109 C   */
+
+    /* Approved dark palette */
+    --navy: #002855;        /* PMS 295 C   */
+    --amber: #FFC72C;       /* PMS 123 C   */
+    --orange: #E87722;      /* PMS 158 C   */
+    --black: #000000;
+
+    /* Approved tint of IEEE blue (20%) for secondary text */
+    --tint-20: #CCE0EB;
+
+    /* Lines and borders (approved colours at reduced opacity) */
+    --line: rgba(0, 181, 226, 0.6);
+    --hairline: rgba(0, 181, 226, 0.2);
+
+    /* Typography (screen/web): Calibri, then Verdana */
+    --font-sans: Calibri, Verdana, sans-serif;
+    --font-sans-light: "Calibri Light", Calibri, Verdana, sans-serif;
+
+    /* Secondary serif for headlines, sparingly: Cambria, then Times New Roman */
+    --font-serif: Cambria, "Times New Roman", serif;
+
+    /* Wedge cut size. Equal x and y = a true 45 degree angle */
+    --wedge: 28px;
+
+    /* Logo clear space (1/2 x for digital) */
+    --logo-clear: 17px;
+}
+
+
+/* =====================================================
+   BASIC RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-size: 17px;
+}
+
+
+a:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 4px;
+}
+
+
+/* =====================================================
+   IEEE MASTER BRAND (LOGO)
+   - one colour, white on dark backgrounds
+   - artwork kept above the 100px minimum width
+   - never stretched (only height is set)
+   - IEEE logo is larger than the SB logo beside it
+   - 1/2 x clear space kept between the two logos
+===================================================== */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    text-decoration: none;
+}
+
+.logo-ieee {
+    display: block;
+    height: 40px;
+    width: auto;
+}
+
+.logo-sb {
+    display: block;
+    height: 34px;
+    width: auto;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    padding: 0 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--hairline);
+    z-index: 100;
+}
+
+
+nav {
+    display: flex;
+    gap: 40px;
+}
+
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+
+nav a:hover {
+    color: var(--cyan);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 100vh;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(0, 98, 155, 0.5) 0%,
+            var(--navy) 38%,
+            var(--black) 100%
+        );
+}
+
+
+/* subtle central glow (warm, from the flame) */
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(
+        circle,
+        rgba(255, 199, 44, 0.1),
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   LAMP STAGE
+===================================================== */
+
+.lamp-stage {
+    position: relative;
+    width: 650px;
+    height: 310px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 2;
+}
+
+
+/* =====================================================
+   NILAVILAKKU
+   (brass tones swapped for approved amber / orange)
+===================================================== */
+
+.lamp {
+    width: 200px;
+    height: 245px;
+    position: relative;
+    z-index: 5;
+}
+
+
+/* Flame */
+
+.flame {
+    position: absolute;
+    width: 34px;
+    height: 58px;
+    top: 0;
+    left: 83px;
+    background: var(--amber);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow:
+        0 0 12px var(--amber),
+        0 0 30px rgba(255, 199, 44, 0.65),
+        0 0 65px rgba(255, 199, 44, 0.25);
+    animation: flame 2s ease-in-out infinite alternate;
+}
+
+@keyframes flame {
+    from { transform: rotate(-45deg) scale(1); }
+    to   { transform: rotate(-45deg) scale(1.08); }
+}
+
+
+/* Wick */
+
+.wick {
+    position: absolute;
+    width: 5px;
+    height: 18px;
+    top: 48px;
+    left: 97px;
+    background: var(--black);
+    border-radius: 5px;
+    z-index: 2;
+}
+
+
+/* Lamp bowl */
+
+.lamp-bowl {
+    position: absolute;
+    width: 130px;
+    height: 36px;
+    top: 62px;
+    left: 35px;
+    background: linear-gradient(to bottom, var(--amber), var(--orange));
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(255, 199, 44, 0.3);
+}
+
+
+/* Lamp neck */
+
+.lamp-neck {
+    position: absolute;
+    width: 30px;
+    height: 90px;
+    top: 76px;
+    left: 85px;
+    background: linear-gradient(to right, var(--orange), var(--amber), var(--orange));
+    border-radius: 8px;
+}
+
+
+/* Lamp middle */
+
+.lamp-middle {
+    position: absolute;
+    width: 70px;
+    height: 28px;
+    top: 150px;
+    left: 65px;
+    background: linear-gradient(to right, var(--orange), var(--amber), var(--orange));
+    border-radius: 50%;
+    box-shadow: 0 3px 8px rgba(255, 199, 44, 0.3);
+}
+
+
+/* Lamp base */
+
+.lamp-base {
+    position: absolute;
+    width: 170px;
+    height: 42px;
+    top: 178px;
+    left: 15px;
+    background: linear-gradient(to bottom, var(--amber), var(--orange));
+    border-radius: 50%;
+    box-shadow: 0 5px 20px rgba(255, 199, 44, 0.3);
+}
+
+
+/* =====================================================
+   CIRCUIT SYSTEM (IEEE cyan)
+===================================================== */
+
+.circuit {
+    position: absolute;
+    top: 125px;
+    width: 190px;
+    height: 80px;
+    z-index: 3;
+}
+
+
+/* ---------- LEFT ---------- */
+
+.circuit-left {
+    right: calc(50% + 100px);
+}
+
+.circuit-left .line-one {
+    position: absolute;
+    width: 150px;
+    height: 1px;
+    top: 0;
+    right: 0;
+    background: var(--line);
+}
+
+.circuit-left .line-two {
+    position: absolute;
+    width: 1px;
+    height: 45px;
+    top: 0;
+    right: 0;
+    background: var(--line);
+}
+
+.circuit-left .node-one {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    top: -4px;
+    left: 35px;
+    background: var(--cyan);
+    box-shadow:
+        0 0 8px var(--cyan),
+        0 0 18px rgba(0, 181, 226, 0.5);
+}
+
+.circuit-left .node-two {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    top: 41px;
+    right: -3px;
+    background: var(--ieee-blue);
+}
+
+
+/* ---------- RIGHT ---------- */
+
+.circuit-right {
+    left: calc(50% + 100px);
+}
+
+.circuit-right .line-one {
+    position: absolute;
+    width: 150px;
+    height: 1px;
+    top: 0;
+    left: 0;
+    background: var(--line);
+}
+
+.circuit-right .line-two {
+    position: absolute;
+    width: 1px;
+    height: 45px;
+    top: 0;
+    left: 0;
+    background: var(--line);
+}
+
+.circuit-right .node-one {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    top: -4px;
+    right: 35px;
+    background: var(--cyan);
+    box-shadow:
+        0 0 8px var(--cyan),
+        0 0 18px rgba(0, 181, 226, 0.5);
+}
+
+.circuit-right .node-two {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    top: 41px;
+    left: -3px;
+    background: var(--ieee-blue);
+}
+
+
+/* =====================================================
+   HERO TEXT
+   Cambria (serif) used sparingly: hero title + tagline only
+===================================================== */
+
+.hero-text {
+    position: relative;
+    z-index: 5;
+    margin-top: -5px;
+}
+
+
+.eyebrow {
+    color: var(--cyan);
+    font-size: 14px;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+
+.hero-text h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(65px, 10vw, 145px);
+    font-weight: 700;
+    line-height: 0.85;
+    letter-spacing: 5px;
+    color: var(--white);
+}
+
+
+.hero-text h1 span {
+    color: var(--amber);
+}
+
+
+.hero-tagline {
+    margin-top: 25px;
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 4.5vw, 58px);
+    line-height: 1.1;
+    color: var(--white);
+}
+
+.hero-tagline span {
+    color: var(--amber);
+}
+
+
+.tagline {
+    margin-top: 35px;
+    color: var(--tint-20);
+    font-size: 14px;
+    letter-spacing: 5px;
+}
+
+
+/* =====================================================
+   EXPLORE BUTTON
+   Wedge: top-right corner cut at exactly 45 degrees
+===================================================== */
+
+.explore-button {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 14px 34px;
+    background: var(--ieee-blue);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    clip-path: polygon(
+        0 0,
+        calc(100% - 14px) 0,
+        100% 14px,
+        100% 100%,
+        0 100%
+    );
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+.explore-button:hover {
+    background: var(--cyan);
+    color: var(--black);
+}
+
+
+/* =====================================================
+   CONTENT SECTIONS
+===================================================== */
+
+.content-section {
+    min-height: 90vh;
+    padding: 120px 10%;
+    background: var(--black);
+    border-top: 1px solid var(--hairline);
+    position: relative;
+}
+
+
+.section-label {
+    color: var(--cyan);
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-bottom: 35px;
+}
+
+
+.content-section h2 {
+    font-family: var(--font-sans-light);
+    font-weight: 300;
+    font-size: clamp(45px, 7vw, 90px);
+    line-height: 0.95;
+    color: var(--white);
+}
+
+
+.section-description {
+    max-width: 580px;
+    margin-top: 40px;
+    color: var(--tint-20);
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   EVENT CARDS
+   Wedge: top-right corner cut at 45 degrees
+===================================================== */
+
+.events-section {
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            var(--navy),
+            var(--black) 70%
+        );
+}
+
+
+.event-placeholder {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+
+.event-card {
+    min-height: 220px;
+    padding: 30px;
+    border-top: 3px solid var(--ieee-blue);
+    background: rgba(0, 98, 155, 0.2);
+
+    clip-path: polygon(
+        0 0,
+        calc(100% - var(--wedge)) 0,
+        100% var(--wedge),
+        100% 100%,
+        0 100%
+    );
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.event-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--cyan);
+}
+
+
+.event-card span {
+    color: var(--cyan);
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+
+.event-card h3 {
+    margin-top: 80px;
+    font-family: var(--font-sans);
+    font-weight: bold;
+    font-size: 28px;
+}
+
+
+.event-card p {
+    margin-top: 10px;
+    color: var(--tint-20);
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   UPDATES
+===================================================== */
+
+.update-line {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--tint-20);
+}
+
+
+.update-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 10px var(--amber);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    min-height: 120px;
+    padding: 40px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--hairline);
+    background: var(--navy);
+    color: var(--white);
+    font-size: 14px;
+    letter-spacing: 3px;
+}
+
+/* keep 1/2 x clear space around the footer logo */
+footer .brand {
+    padding: var(--logo-clear) 0;
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .flame {
+        animation: none;
+    }
+
+    .event-card,
+    .explore-button {
+        transition: none;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    /* IEEE logo stays; SB logo moves to the footer on small screens */
+    .navbar .logo-sb {
+        display: none;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .lamp-stage {
+        width: 100%;
+        height: 280px;
+        transform: scale(0.75);
+    }
+
+    .circuit {
+        opacity: 0.4;
+    }
+
+    .hero {
+        padding-top: 80px;
+    }
+
+    .hero-text h1 {
+        letter-spacing: 2px;
+    }
+
+    .tagline {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .event-placeholder {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+}
